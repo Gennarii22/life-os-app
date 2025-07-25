@@ -6,16 +6,10 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import { ChevronRight, Plus, BrainCircuit, Target, DollarSign, HeartHandshake, Dumbbell, Settings, LayoutDashboard, CheckSquare, Calendar, ListTodo, Lightbulb, Bot, Sparkles, Trash2, Upload, BookUser, Sun, Moon, XCircle, FileText } from 'lucide-react';
 
 // --- CONFIGURAZIONE FIREBASE ---
-// Questo codice è progettato per leggere le Variabili d'Ambiente impostate su Vercel.
-const firebaseConfigString = process.env.REACT_APP_FIREBASE_CONFIG;
-let firebaseConfig = {};
-try {
-    firebaseConfig = firebaseConfigString ? JSON.parse(firebaseConfigString) : {};
-} catch (e) {
-    console.error("Errore nel parsing della configurazione Firebase. Assicurati che sia un JSON valido nelle tue Variabili d'Ambiente su Vercel.", e);
-}
-const appId = process.env.REACT_APP_APP_ID || 'life-os-default';
-const initialAuthToken = process.env.REACT_APP_INITIAL_AUTH_TOKEN;
+// Questo codice è progettato per leggere le variabili globali fornite dall'ambiente di esecuzione.
+const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+const appId = typeof __app_id !== 'undefined' ? __app_id : 'life-os-default';
+const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
 
 // --- COMPONENTI DI UTILITÀ ---
@@ -135,7 +129,7 @@ export default function App() {
                  setIsAuthReady(true);
             }
         } else {
-            console.log("Configurazione Firebase non trovata. Controlla le tue Variabili d'Ambiente su Vercel.");
+            console.log("Configurazione Firebase non trovata.");
             setIsAuthReady(true);
         }
     }, []);
@@ -1269,5 +1263,3 @@ const SundayShutdown = () => {
         </div>
     );
 };
-
-
