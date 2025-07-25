@@ -6,7 +6,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import { ChevronRight, Plus, BrainCircuit, Target, DollarSign, HeartHandshake, Dumbbell, Settings, LayoutDashboard, CheckSquare, Calendar, ListTodo, Lightbulb, Bot, Sparkles, Trash2, Upload, BookUser, Sun, Moon, XCircle, FileText } from 'lucide-react';
 
 // --- CONFIGURAZIONE FIREBASE ---
-// Queste variabili vengono popolate dall'ambiente di esecuzione.
+// Questo codice è progettato per leggere le variabili globali fornite dall'ambiente di esecuzione.
 const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
 const appId = typeof __app_id !== 'undefined' ? __app_id : 'life-os-default';
 const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
@@ -129,7 +129,7 @@ export default function App() {
                  setIsAuthReady(true);
             }
         } else {
-            console.log("Configurazione Firebase non trovata. Controlla il tuo file .env");
+            console.log("Configurazione Firebase non trovata.");
             setIsAuthReady(true);
         }
     }, []);
@@ -1263,3 +1263,4 @@ const SundayShutdown = () => {
         </div>
     );
 };
+
